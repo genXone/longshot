@@ -765,7 +765,7 @@ fn extract_var_cluster(
     for v in 0..n_vars {
         let best_allele = max_hap[v];
         assert_ne!(allele_scores[v][best_allele as usize], LogProb::ln_zero());
-        let lnfrac = allele_scores[v][best_allele as usize] - score_total;
+        let mut lnfrac = allele_scores[v][best_allele as usize] - score_total;
         if lnrac>0.0 { lnfrac = 0.0 ; }
         let mut qual =
             //LogProb::ln_one_minus_exp(&(allele_scores[v][best_allele as usize] - score_total));
