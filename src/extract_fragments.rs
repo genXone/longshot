@@ -674,7 +674,7 @@ fn extract_var_cluster(
         allele_scores.push(vec![LogProb::ln_zero(); n_alleles]);
     }
 
-    //let mut score_total: LogProb = LogProb::ln_zero();
+    let mut score_total: LogProb = LogProb::ln_zero();
 
     if VERBOSE {
         for var in var_cluster.clone() {
@@ -754,7 +754,7 @@ fn extract_var_cluster(
             );
         }
         // add current alignment score to the total score sum
-        //score_total = LogProb::ln_add_exp(score_total, score);
+        score_total = LogProb::ln_add_exp(score_total, score);
 
         if score > max_score {
             max_score = score;
